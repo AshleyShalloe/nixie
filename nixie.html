@@ -1,0 +1,335 @@
+<html>
+
+<head>
+    <style>
+        body{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .filament.zero::after {
+            content: "0";
+            z-index: 8;
+        }
+
+        .filament.one::after {
+            content: "1";
+            z-index: 9;
+        }
+
+        .filament.two::after {
+            content: "2";
+            z-index: 7;
+        }
+
+        .filament.three::after {
+            content: "3";
+            z-index: 5;
+        }
+
+        .filament.four::after {
+            content: "4";
+            z-index: 4;
+        }
+
+        .filament.five::after {
+            content: "5";
+            z-index: 3;
+        }
+
+        .filament.six::after {
+            content: "6";
+            z-index: 0;
+        }
+
+        .filament.seven::after {
+            content: "7";
+            z-index: 1;
+        }
+
+        .filament.eight::after {
+            content: "8";
+            z-index: 4;
+        }
+
+        .filament.nine::after {
+            content: "9";
+            z-index: 6;
+        }
+
+        .filament {
+            display: inline-block;
+            /* position: absolute; */
+            font-size: 40vh;
+            font-weight: 100;
+            text-shadow: 1px 1px 0px #8080802e;
+            color: #ffffff00;
+            font-family: monospace;
+            grid-column-start: 1;
+            grid-row-start: 1;
+        }
+
+        .digit {
+            display: grid;
+            grid-row-start: 1;
+            grid-column-start: 1;
+            grid-row-end: 1;
+            grid-column-end: 1;
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+
+        #clockContainer {
+            box-shadow: 0px 0px 10px grey;
+            padding: 30px 10px;
+            white-space: nowrap;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: fit-content;
+        }
+
+        #buttonsDiv {
+            bottom: 0;
+            width: 100%;
+            position: fixed;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        #buttonsDiv button {
+            background: white;
+            color: lightgray;
+            border: 0px;
+            box-shadow: 0px 0px 5px lightgray;
+            padding: 10px;
+            transition: box-shadow 0.5s, color 0.5s;
+            cursor: pointer;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        #buttonsDiv button:hover {
+            box-shadow: 0px 0px 5px gray;
+            color: black;
+        }
+
+        .digitContainer {
+            display: inline-block;
+        }
+
+        .colon {
+            display: inline-block;
+            width: 40px;
+            background: orangered;
+            box-shadow: 3px 3px 3px orangered;
+        }
+
+        .colon::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background: orangered;
+            border-radius: 100%;
+            position: absolute;
+            margin-top: 60px;
+            margin-left: 10px;
+        }
+
+        .colon::after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background: orangered;
+            border-radius: 100%;
+            position: absolute;
+            margin-top: -60px;
+            margin-left: 10px;
+        }
+        .filament.on{
+            color: orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clockContainer">
+        <div class="digitContainer">
+            <div id="firstDigit" class="digit">
+                <div class="filament zero"></div>
+                <div class="filament one"></div>
+                <div class="filament two"></div>
+                <div class="filament three"></div>
+                <div class="filament four"></div>
+                <div class="filament five"></div>
+                <div class="filament six"></div>
+                <div class="filament seven"></div>
+                <div class="filament eight"></div>
+                <div class="filament nine"></div>
+            </div>
+        </div>
+        <div class="digitContainer">
+            <div id="secondtDigit" class="digit">
+                <div class="filament zero"></div>
+                <div class="filament one"></div>
+                <div class="filament two"></div>
+                <div class="filament three"></div>
+                <div class="filament four"></div>
+                <div class="filament five"></div>
+                <div class="filament six"></div>
+                <div class="filament seven"></div>
+                <div class="filament eight"></div>
+                <div class="filament nine"></div>
+            </div>
+        </div>
+        <div class="colon"></div>
+        <div class="digitContainer">
+            <div id="thirdDigit" class="digit">
+                <div class="filament zero"></div>
+                <div class="filament one"></div>
+                <div class="filament two"></div>
+                <div class="filament three"></div>
+                <div class="filament four"></div>
+                <div class="filament five"></div>
+                <div class="filament six"></div>
+                <div class="filament seven"></div>
+                <div class="filament eight"></div>
+                <div class="filament nine"></div>
+            </div>
+        </div>
+        <div class="digitContainer">
+            <div id="fourthDigit" class="digit">
+                <div class="filament zero"></div>
+                <div class="filament one"></div>
+                <div class="filament two"></div>
+                <div class="filament three"></div>
+                <div class="filament four"></div>
+                <div class="filament five"></div>
+                <div class="filament six"></div>
+                <div class="filament seven"></div>
+                <div class="filament eight"></div>
+                <div class="filament nine"></div>
+            </div>
+        </div>
+        <div class="colon"></div>
+        <div class="digitContainer">
+            <div id="fifthDigit" class="digit">
+                <div class="filament zero"></div>
+                <div class="filament one"></div>
+                <div class="filament two"></div>
+                <div class="filament three"></div>
+                <div class="filament four"></div>
+                <div class="filament five"></div>
+                <div class="filament six"></div>
+                <div class="filament seven"></div>
+                <div class="filament eight"></div>
+                <div class="filament nine"></div>
+            </div>
+        </div>
+        <div class="digitContainer">
+            <div id="sixthDigit" class="digit">
+                <div class="filament zero"></div>
+                <div class="filament one"></div>
+                <div class="filament two"></div>
+                <div class="filament three"></div>
+                <div class="filament four"></div>
+                <div class="filament five"></div>
+                <div class="filament six"></div>
+                <div class="filament seven"></div>
+                <div class="filament eight"></div>
+                <div class="filament nine"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+'use strict'
+
+var digitsArray = [
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine"
+]
+
+function setDigitToNumeral(digitElement, numeral){
+    var numeralName = digitsArray[numeral]
+    for (var i=0; i<digitElement.getElementsByClassName("filament").length; i++){
+        var getState = digitElement.getElementsByClassName("filament")[i].classList.contains("on")
+        var setState = digitElement.getElementsByClassName("filament")[i].classList.contains(numeralName)
+        if (getState != setState){
+            digitElement.getElementsByClassName("filament")[i].classList.toggle("on")
+        }
+    }
+}
+
+function scaleClockToWidth(){
+    var clockWidth =  document.getElementById("clockContainer").offsetWidth
+    var viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    var largeScale = (0.9 * viewportWidth) / clockWidth
+    var smallScale = (0.6 * viewportWidth) / clockWidth
+    
+    if (viewportWidth > 500){
+        document.getElementById("clockContainer").style.transform = `scale(${smallScale})`
+    }
+    else{
+        document.getElementById("clockContainer").style.transform = `scale(${largeScale})`
+    }
+}
+
+function debounce(func, timeout = 100){
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    };
+}
+
+function leftpad(input_string, target_length, padding_char){
+    var padded_string = input_string
+    while (padded_string.length < target_length){
+        padded_string = padding_char + padded_string
+    }
+    return padded_string
+}
+
+function setTime(){
+    var date = new Date()
+    var hours = leftpad(date.getHours().toString(), 2, 0)
+    var minutes = leftpad(date.getMinutes().toString(), 2, 0)
+    var seconds = leftpad(date.getSeconds().toString(), 2, 0)
+    var time = hours+minutes+seconds
+    for (var i=0; i<time.length; i++){
+        setDigitToNumeral(document.getElementById("clockContainer").getElementsByClassName("digit")[i], time[i])
+    }
+}
+
+function startClock(){
+    return setInterval(function(){
+        setTime();
+    }, 30)
+}
+
+function init(){
+    clockIntervalId = startClock()
+    scaleClockToWidth();
+    const debounceScaleClockToWidth =  debounce(() => scaleClockToWidth());
+    window.addEventListener('resize', function(event){debounceScaleClockToWidth()});
+}
+
+// interval id for clock
+var clockIntervalId = false
+
+init();
+</script>
+
+</html>
