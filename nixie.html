@@ -2,7 +2,7 @@
 
 <head>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+        /* @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap'); */
 
         body{
             display: flex;
@@ -68,7 +68,7 @@
             font-weight: 100;
             text-shadow: 1px 1px 0px #8080802e;
             color: #ffffff00;
-            font-family: 'Inconsolata', monospace;
+            font-family: monospace;
             grid-column-start: 1;
             grid-row-start: 1;
         }
@@ -314,13 +314,12 @@ function leftpad(input_string, target_length, padding_char){
 }
 
 function setTime(){
-    var date = new Date()
-    var hours = leftpad(date.getHours().toString(), 2, 0)
-    var minutes = leftpad(date.getMinutes().toString(), 2, 0)
-    var seconds = leftpad(date.getSeconds().toString(), 2, 0)
-    var time = hours+minutes+seconds
+    var time = getTimeAsString()
     for (var i=0; i<time.length; i++){
         setDigitToNumeral(document.getElementById("clockContainer").getElementsByClassName("digit")[i], time[i])
+    }
+    if (time.slice(4,6) == "00"){
+        randomCycleAllDigits();
     }
 }
 
@@ -328,6 +327,65 @@ function startClock(){
     return setInterval(function(){
         setTime();
     }, 30)
+}
+
+function stopClock(){
+    clockIntervalId = clearInterval(clockIntervalId)
+}
+
+function getRandomInt(){
+    return Math.floor(Math.random() * 10)
+}
+
+function getTimeAsString(){
+    var date = new Date()
+    var hours = leftpad(date.getHours().toString(), 2, 0)
+    var minutes = leftpad(date.getMinutes().toString(), 2, 0)
+    var seconds = leftpad(date.getSeconds().toString(), 2, 0)
+    var time = hours+minutes+seconds
+    return time
+}
+
+async function randomCycle(digitElement, cycleLength=10, digitPos=0){
+    `
+    Stops the clock. Doesn't restart it
+    `
+    stopClock();
+    for (var i=0; i<cycleLength; i++){
+        setDigitToNumeral(digitElement, getRandomInt())
+        await new Promise(r => setTimeout(r, 90)); // sleep
+    }
+    // end on the correct time if digitPos if specified, or 0
+    var timeDigit = getTimeAsString()[digitPos]
+    setDigitToNumeral(digitElement, timeDigit)
+    timeoutCounts -= 1
+}
+
+async function randomCycleAllDigits(){
+    `
+    Stops the clock, does restart it
+    `
+    if (!clockIntervalId){ // suppress if already doing a thing
+        return 0;
+    }
+    stopClock();
+
+    timeoutCounts = document.getElementById("clockContainer").getElementsByClassName("digitContainer").length
+
+    for (var i=0; i<document.getElementById("clockContainer").getElementsByClassName("digitContainer").length; i++){
+        setTimeout(function(){
+                randomCycle(
+                    document.getElementById("clockContainer").getElementsByClassName("digitContainer")[i],
+                    10 + getRandomInt(),
+                    i
+                );
+            }, 0);
+        await new Promise(r => setTimeout(r, 40)); // sleep
+    }
+    while (timeoutCounts != 0){
+        await new Promise(r => setTimeout(r, 40)); // sleep
+    }
+    clockIntervalId = startClock();
 }
 
 function init(){
@@ -339,6 +397,9 @@ function init(){
 
 // interval id for clock
 var clockIntervalId = false
+
+// timeout counts for randomCycleAllDigits
+var timeoutCounts = 0
 
 init();
 </script>
