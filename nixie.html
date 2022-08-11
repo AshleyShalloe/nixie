@@ -2,11 +2,14 @@
 
 <head>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+
         body{
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
+            background: white;
         }
         .filament.zero::after {
             content: "0";
@@ -65,7 +68,7 @@
             font-weight: 100;
             text-shadow: 1px 1px 0px #8080802e;
             color: #ffffff00;
-            font-family: monospace;
+            font-family: 'Inconsolata', monospace;
             grid-column-start: 1;
             grid-row-start: 1;
         }
@@ -119,13 +122,18 @@
 
         .digitContainer {
             display: inline-block;
+            box-shadow: 0px 0px 3px #292929b5;
+            border-top-left-radius: 80px;
+            border-top-right-radius: 80px;
+            margin-left: 5px;
+            margin-right: 5px;
         }
 
         .colon {
             display: inline-block;
             width: 40px;
             background: orangered;
-            box-shadow: 3px 3px 3px orangered;
+            box-shadow: 0px 0px 10px orange;
         }
 
         .colon::before {
@@ -151,6 +159,7 @@
         }
         .filament.on{
             color: orangered;
+            text-shadow: 0px 0px 10px orange;
         }
     </style>
 </head>
@@ -159,88 +168,88 @@
     <div id="clockContainer">
         <div class="digitContainer">
             <div id="firstDigit" class="digit">
-                <div class="filament zero"></div>
-                <div class="filament one"></div>
-                <div class="filament two"></div>
-                <div class="filament three"></div>
-                <div class="filament four"></div>
-                <div class="filament five"></div>
                 <div class="filament six"></div>
                 <div class="filament seven"></div>
+                <div class="filament five"></div>
                 <div class="filament eight"></div>
+                <div class="filament four"></div>
+                <div class="filament three"></div>
                 <div class="filament nine"></div>
+                <div class="filament two"></div>
+                <div class="filament zero"></div>
+                <div class="filament one"></div>
             </div>
         </div>
         <div class="digitContainer">
             <div id="secondtDigit" class="digit">
-                <div class="filament zero"></div>
-                <div class="filament one"></div>
-                <div class="filament two"></div>
-                <div class="filament three"></div>
-                <div class="filament four"></div>
-                <div class="filament five"></div>
                 <div class="filament six"></div>
                 <div class="filament seven"></div>
+                <div class="filament five"></div>
                 <div class="filament eight"></div>
+                <div class="filament four"></div>
+                <div class="filament three"></div>
                 <div class="filament nine"></div>
+                <div class="filament two"></div>
+                <div class="filament zero"></div>
+                <div class="filament one"></div>
             </div>
         </div>
         <div class="colon"></div>
         <div class="digitContainer">
             <div id="thirdDigit" class="digit">
-                <div class="filament zero"></div>
-                <div class="filament one"></div>
-                <div class="filament two"></div>
-                <div class="filament three"></div>
-                <div class="filament four"></div>
-                <div class="filament five"></div>
                 <div class="filament six"></div>
                 <div class="filament seven"></div>
+                <div class="filament five"></div>
                 <div class="filament eight"></div>
+                <div class="filament four"></div>
+                <div class="filament three"></div>
                 <div class="filament nine"></div>
+                <div class="filament two"></div>
+                <div class="filament zero"></div>
+                <div class="filament one"></div>
             </div>
         </div>
         <div class="digitContainer">
             <div id="fourthDigit" class="digit">
-                <div class="filament zero"></div>
-                <div class="filament one"></div>
-                <div class="filament two"></div>
-                <div class="filament three"></div>
-                <div class="filament four"></div>
-                <div class="filament five"></div>
                 <div class="filament six"></div>
                 <div class="filament seven"></div>
+                <div class="filament five"></div>
                 <div class="filament eight"></div>
+                <div class="filament four"></div>
+                <div class="filament three"></div>
                 <div class="filament nine"></div>
+                <div class="filament two"></div>
+                <div class="filament zero"></div>
+                <div class="filament one"></div>
             </div>
         </div>
         <div class="colon"></div>
         <div class="digitContainer">
             <div id="fifthDigit" class="digit">
-                <div class="filament zero"></div>
-                <div class="filament one"></div>
-                <div class="filament two"></div>
-                <div class="filament three"></div>
-                <div class="filament four"></div>
-                <div class="filament five"></div>
                 <div class="filament six"></div>
                 <div class="filament seven"></div>
+                <div class="filament five"></div>
                 <div class="filament eight"></div>
+                <div class="filament four"></div>
+                <div class="filament three"></div>
                 <div class="filament nine"></div>
+                <div class="filament two"></div>
+                <div class="filament zero"></div>
+                <div class="filament one"></div>
             </div>
         </div>
         <div class="digitContainer">
             <div id="sixthDigit" class="digit">
-                <div class="filament zero"></div>
-                <div class="filament one"></div>
-                <div class="filament two"></div>
-                <div class="filament three"></div>
-                <div class="filament four"></div>
-                <div class="filament five"></div>
                 <div class="filament six"></div>
                 <div class="filament seven"></div>
+                <div class="filament five"></div>
                 <div class="filament eight"></div>
+                <div class="filament four"></div>
+                <div class="filament three"></div>
                 <div class="filament nine"></div>
+                <div class="filament two"></div>
+                <div class="filament zero"></div>
+                <div class="filament one"></div>
             </div>
         </div>
     </div>
@@ -260,6 +269,8 @@ var digitsArray = [
     "eight",
     "nine"
 ]
+
+var nixieOrder = "6758439201" // for max legibility, apparently
 
 function setDigitToNumeral(digitElement, numeral){
     var numeralName = digitsArray[numeral]
