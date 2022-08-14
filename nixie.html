@@ -8,6 +8,7 @@
             justify-content: center;
             align-items: center;
             background: white;
+            transition: background 2s;
         }
         .filament.zero::after {
             content: "0";
@@ -61,10 +62,8 @@
 
         .filament {
             display: inline-block;
-            /* position: absolute; */
             font-size: 40vh;
             font-weight: 100;
-            /* text-shadow: 1px 1px 0px #8080802e; */
             -webkit-text-stroke: 2px #808080;
             color: #ffffff00;
             font-family: monospace;
@@ -253,6 +252,9 @@
             </div>
         </div>
     </div>
+    <div id="buttonsDiv">
+        <button onclick="toggleLights()">Toggle lights</button>
+    </div>
 </body>
 <script>
 'use strict'
@@ -386,6 +388,34 @@ async function randomCycleAllDigits(){
         await new Promise(r => setTimeout(r, 40)); // sleep
     }
     clockIntervalId = startClock();
+}
+
+function toggleLights(){
+    if (document.getElementById("darkModeStyle")){
+        document.getElementById("darkModeStyle").remove();
+    }
+    else{
+        var darkModeStyle = `
+            <style id="darkModeStyle">
+                body{
+                    background: black;
+                }
+                .filament{
+                    -webkit-text-stroke: 2px #181818;
+                }
+                .filament.on{
+                    text-shadow: 0px 0px 63px #ffa5009c;
+                }
+                #buttonsDiv{
+                    filter: invert(1);
+                }
+                #clockContainer{
+                    box-shadow: 0px 0px 10px #1b1b1b;
+                }
+            </style>
+            `;
+        document.getElementsByTagName("body")[0].innerHTML += darkModeStyle;
+    }
 }
 
 function init(){
